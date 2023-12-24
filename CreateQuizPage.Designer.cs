@@ -45,10 +45,11 @@
             this.lbl_sayac = new System.Windows.Forms.Label();
             this.btncreate = new System.Windows.Forms.Button();
             this.txtquestion = new System.Windows.Forms.TextBox();
-            this.txtqstname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnsave = new System.Windows.Forms.Button();
+            this.btn_devam = new System.Windows.Forms.Button();
+            this.cmb_quiz = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 266);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1274, 195);
+            this.panel2.Size = new System.Drawing.Size(1333, 195);
             this.panel2.TabIndex = 1;
             // 
             // btn_editt
@@ -89,7 +90,7 @@
             // checkD
             // 
             this.checkD.AutoSize = true;
-            this.checkD.Location = new System.Drawing.Point(614, 108);
+            this.checkD.Location = new System.Drawing.Point(598, 108);
             this.checkD.Name = "checkD";
             this.checkD.Size = new System.Drawing.Size(112, 20);
             this.checkD.TabIndex = 18;
@@ -99,7 +100,7 @@
             // checkB
             // 
             this.checkB.AutoSize = true;
-            this.checkB.Location = new System.Drawing.Point(614, 10);
+            this.checkB.Location = new System.Drawing.Point(598, 10);
             this.checkB.Name = "checkB";
             this.checkB.Size = new System.Drawing.Size(112, 20);
             this.checkB.TabIndex = 17;
@@ -109,7 +110,7 @@
             // checkC
             // 
             this.checkC.AutoSize = true;
-            this.checkC.Location = new System.Drawing.Point(175, 107);
+            this.checkC.Location = new System.Drawing.Point(159, 107);
             this.checkC.Name = "checkC";
             this.checkC.Size = new System.Drawing.Size(112, 20);
             this.checkC.TabIndex = 16;
@@ -119,7 +120,7 @@
             // checkA
             // 
             this.checkA.AutoSize = true;
-            this.checkA.Location = new System.Drawing.Point(175, 12);
+            this.checkA.Location = new System.Drawing.Point(159, 12);
             this.checkA.Name = "checkA";
             this.checkA.Size = new System.Drawing.Size(112, 20);
             this.checkA.TabIndex = 15;
@@ -130,7 +131,7 @@
             // txtasw_d
             // 
             this.txtasw_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtasw_d.Location = new System.Drawing.Point(472, 132);
+            this.txtasw_d.Location = new System.Drawing.Point(456, 132);
             this.txtasw_d.Multiline = true;
             this.txtasw_d.Name = "txtasw_d";
             this.txtasw_d.Size = new System.Drawing.Size(413, 51);
@@ -140,7 +141,7 @@
             // txtasw_b
             // 
             this.txtasw_b.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtasw_b.Location = new System.Drawing.Point(472, 36);
+            this.txtasw_b.Location = new System.Drawing.Point(456, 36);
             this.txtasw_b.Multiline = true;
             this.txtasw_b.Name = "txtasw_b";
             this.txtasw_b.Size = new System.Drawing.Size(413, 51);
@@ -150,7 +151,7 @@
             // txtasw_c
             // 
             this.txtasw_c.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtasw_c.Location = new System.Drawing.Point(31, 132);
+            this.txtasw_c.Location = new System.Drawing.Point(15, 132);
             this.txtasw_c.Multiline = true;
             this.txtasw_c.Name = "txtasw_c";
             this.txtasw_c.Size = new System.Drawing.Size(413, 51);
@@ -160,7 +161,7 @@
             // txtasw_a
             // 
             this.txtasw_a.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtasw_a.Location = new System.Drawing.Point(31, 36);
+            this.txtasw_a.Location = new System.Drawing.Point(15, 36);
             this.txtasw_a.Multiline = true;
             this.txtasw_a.Name = "txtasw_a";
             this.txtasw_a.Size = new System.Drawing.Size(413, 51);
@@ -171,7 +172,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(28, 108);
+            this.label5.Location = new System.Drawing.Point(12, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 18);
             this.label5.TabIndex = 11;
@@ -181,7 +182,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(469, 108);
+            this.label4.Location = new System.Drawing.Point(453, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 18);
             this.label4.TabIndex = 10;
@@ -191,7 +192,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(469, 15);
+            this.label3.Location = new System.Drawing.Point(453, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 18);
             this.label3.TabIndex = 9;
@@ -201,7 +202,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(30, 15);
+            this.label2.Location = new System.Drawing.Point(14, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 18);
             this.label2.TabIndex = 8;
@@ -230,40 +231,32 @@
             this.btncreate.Text = "Soru Oluştur";
             this.btncreate.UseVisualStyleBackColor = false;
             this.btncreate.Visible = false;
-            this.btncreate.Click += new System.EventHandler(this.button1_Click);
+            this.btncreate.Click += new System.EventHandler(this.btnquestsave_Click);
             // 
             // txtquestion
             // 
             this.txtquestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtquestion.Location = new System.Drawing.Point(31, 40);
+            this.txtquestion.Location = new System.Drawing.Point(12, 40);
             this.txtquestion.Multiline = true;
             this.txtquestion.Name = "txtquestion";
             this.txtquestion.Size = new System.Drawing.Size(854, 207);
             this.txtquestion.TabIndex = 2;
             // 
-            // txtqstname
-            // 
-            this.txtqstname.Location = new System.Drawing.Point(915, 61);
-            this.txtqstname.Multiline = true;
-            this.txtqstname.Name = "txtqstname";
-            this.txtqstname.Size = new System.Drawing.Size(347, 32);
-            this.txtqstname.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(1034, 40);
+            this.label1.Location = new System.Drawing.Point(932, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 18);
+            this.label1.Size = new System.Drawing.Size(327, 18);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Teste İsim Ver";
+            this.label1.Text = "Teste İsim Ver veya Var Olan Bir Testi Seç";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(28, 21);
+            this.label6.Location = new System.Drawing.Point(12, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 16);
             this.label6.TabIndex = 8;
@@ -273,23 +266,45 @@
             // 
             this.btnsave.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnsave.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnsave.Location = new System.Drawing.Point(915, 99);
+            this.btnsave.Location = new System.Drawing.Point(902, 99);
             this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(347, 37);
+            this.btnsave.Size = new System.Drawing.Size(188, 37);
             this.btnsave.TabIndex = 9;
             this.btnsave.Text = "Test Oluştur";
             this.btnsave.UseVisualStyleBackColor = false;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
+            // btn_devam
+            // 
+            this.btn_devam.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_devam.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_devam.Location = new System.Drawing.Point(1127, 99);
+            this.btn_devam.Name = "btn_devam";
+            this.btn_devam.Size = new System.Drawing.Size(183, 37);
+            this.btn_devam.TabIndex = 10;
+            this.btn_devam.Text = "Teste Devam Et";
+            this.btn_devam.UseVisualStyleBackColor = false;
+            this.btn_devam.Click += new System.EventHandler(this.btndevam_Click);
+            // 
+            // cmb_quiz
+            // 
+            this.cmb_quiz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmb_quiz.FormattingEnabled = true;
+            this.cmb_quiz.Location = new System.Drawing.Point(902, 63);
+            this.cmb_quiz.Name = "cmb_quiz";
+            this.cmb_quiz.Size = new System.Drawing.Size(408, 30);
+            this.cmb_quiz.TabIndex = 11;
+            // 
             // CreateQuizPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 461);
+            this.ClientSize = new System.Drawing.Size(1333, 461);
+            this.Controls.Add(this.cmb_quiz);
+            this.Controls.Add(this.btn_devam);
             this.Controls.Add(this.btnsave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtqstname);
             this.Controls.Add(this.lbl_sayac);
             this.Controls.Add(this.btncreate);
             this.Controls.Add(this.txtquestion);
@@ -312,7 +327,6 @@
         private System.Windows.Forms.TextBox txtquestion;
         private System.Windows.Forms.Label lbl_sayac;
         private System.Windows.Forms.Button btncreate;
-        private System.Windows.Forms.TextBox txtqstname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtasw_d;
         private System.Windows.Forms.TextBox txtasw_b;
@@ -329,5 +343,7 @@
         private System.Windows.Forms.CheckBox checkB;
         private System.Windows.Forms.Button btnsave;
         private System.Windows.Forms.Button btn_editt;
+        private System.Windows.Forms.Button btn_devam;
+        private System.Windows.Forms.ComboBox cmb_quiz;
     }
 }

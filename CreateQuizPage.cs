@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Data.SqlClient;
+using System.ComponentModel.DataAnnotations;
 
 namespace Quizcim
 {
@@ -23,7 +24,28 @@ namespace Quizcim
         string constr = $"Data source ={connect}\\quizappdb.db;Version=3;";
        
         
-        public int sayac = 0;
+
+
+        private void quizsname()
+        {
+            var sql = new SQLiteConnection(constr);
+            sql.Open();
+
+            cmb_quiz.Items.Clear();
+
+
+            SQLiteCommand sqlc = new SQLiteCommand("select quiz_name from quizs", sql);
+
+            SQLiteDataReader dtr = sqlc.ExecuteReader();
+
+            while (dtr.Read())
+            {
+                cmb_quiz.Items.Add(dtr["quiz_name"].ToString());
+            }
+
+            sql.Close();
+        }
+
 
 
 
@@ -33,26 +55,30 @@ namespace Quizcim
             var con = new SQLiteConnection(constr);
 
 
-            string qzname = txtqstname.Text;
+            string qzname = cmb_quiz.Text.ToString();
             string qzid = "";
 
-
-            con.Open();
-
-            var cmd = new SQLiteCommand($"select quiz_id from quizs where quiz_name = '{qzname}'", con);
-
-            SQLiteDataReader dtr = cmd.ExecuteReader();
-            
-            if(dtr.Read())
+            if (!string.IsNullOrEmpty(cmb_quiz.Text))
             {
-                qzid = dtr["quiz_id"].ToString();
+                con.Open();
+
+                var cmd = new SQLiteCommand($"select quiz_id from quizs where quiz_name = '{qzname}'", con);
+
+                SQLiteDataReader dtr = cmd.ExecuteReader();
+
+                if (dtr.Read())
+                {
+                    qzid = dtr["quiz_id"].ToString();
+                }
+
+                dtr.Close();
+                con.Close();
+
+                return int.Parse(qzid);
             }
+            else MessageBox.Show("Test Seçiniz"); return 1;
 
-            MessageBox.Show("Quiz id " + qzid);
 
-            dtr.Close();
-            con.Close();
-            return int.Parse(qzid);
         }
 
 
@@ -83,13 +109,90 @@ namespace Quizcim
             {
                 MessageBox.Show("Lütfen Doğru Şıkkı Seçiniz");
             }
-            MessageBox.Show("Doğru Cevap: " + trueans);
             return trueans;
         }
 
 
 
 
+        // QUİZ QUESTİON SAVE
+        public void questionsave()
+        {
+            // question and answers
+            string
+              question = txtquestion.Text,
+              answer_A = txtasw_a.Text,
+              answer_B = txtasw_b.Text,
+              answer_C = txtasw_c.Text,
+              answer_D = txtasw_d.Text,
+              truequest = truemethod();
+
+            int questid = quizidmethod();
+
+
+
+
+
+            // connection
+            var con = new SQLiteConnection(constr);
+            con.Open();
+
+
+
+            if (!string.IsNullOrEmpty(cmb_quiz.Text))
+            {
+
+                // question count
+                string quiznames = cmb_quiz.Text.ToString();
+                SQLiteCommand cmdsayi = new SQLiteCommand($"select count(question) from questions where quiz_id = (select quiz_id from quizs where quiz_name = '{quiznames}')", con);
+
+                int kayitSayisi = Convert.ToInt32(cmdsayi.ExecuteScalar());
+
+
+
+
+                string qstname = cmb_quiz.Text.ToString();
+
+                if (question != "" || answer_A != "" || answer_B != "" || answer_C != "" || answer_D != "" || truequest != "")
+                {
+                    kayitSayisi++;
+
+                    SQLiteCommand cmd = new SQLiteCommand($"insert into questions values({questid}, '{"Soru " + kayitSayisi + " " + question}', '{answer_A}', '{answer_B}', '{answer_C}', '{answer_D}', '{truequest}');", con);
+
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Soru Eklendi");
+
+                    con.Close();
+
+
+                    lbl_sayac.Text = "Oluşturulan Soru Sayısı: " + kayitSayisi;
+
+
+
+
+                    // clear
+                    txtquestion.Text = "";
+                    txtasw_a.Text = "";
+                    txtasw_b.Text = "";
+                    txtasw_c.Text = "";
+                    txtasw_d.Text = "";
+
+
+                    checkA.Checked = false;
+                    checkB.Checked = false;
+                    checkC.Checked = false;
+                    checkD.Checked = false;
+                }
+                else MessageBox.Show("Soru Eklenemedi");
+            }
+                
+
+
+
+            
+        }
 
 
 
@@ -103,21 +206,38 @@ namespace Quizcim
             var con = new SQLiteConnection(constr);
             con.Open();
 
-            string qstname = txtqstname.Text;
 
-            if(qstname != "")
+
+            string qstname = cmb_quiz.Text.Trim();
+            bool namecheck = false;
+
+            // Var olan bir test mi kontrolü
+            foreach (string item in cmb_quiz.Items)
             {
-                SQLiteCommand cmd = new SQLiteCommand($"insert into quizs(quiz_name) values('{qstname}')", con);
+                if (item.Trim() == qstname)
+                {
+                    namecheck = true;
+                    break;
+                }
+            }
 
-                cmd.ExecuteNonQuery();
+            // quiz create sql
+            if (!string.IsNullOrEmpty(qstname) && !namecheck)
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand($"INSERT INTO quizs (quiz_name) VALUES ('{qstname}')", con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
 
-                MessageBox.Show("Test Eklendi");
+                MessageBox.Show("Test Oluşturuldu");
                 con.Close();
 
                 lbl_sayac.Visible = true;
                 btncreate.Visible = true;
+
+                quizsname();
             }
-            else MessageBox.Show("Quiz İsmi Girilmedi");
+            else MessageBox.Show("Test İsmi Girilmedi veya Var Olan Bir Test Girildi");
         }
 
 
@@ -126,67 +246,33 @@ namespace Quizcim
 
 
         // SAVE QUESTİON ANSWER
-        private void button1_Click(object sender, EventArgs e)
-    {
+        private void btnquestsave_Click(object sender, EventArgs e)
+        {
 
-            // question and answers
-            string
-              question = txtquestion.Text,
-              answer_A = txtasw_a.Text,
-              answer_B = txtasw_b.Text,
-              answer_C = txtasw_c.Text,
-              answer_D = txtasw_d.Text,
-              truequest = truemethod();
-
-            int questid = quizidmethod();
-
-
-            var con = new SQLiteConnection(constr);
-            con.Open();
-
-            string qstname = txtqstname.Text;
-
-            if (question != "" || answer_A != "" || answer_B != "" || answer_C != "" || answer_D != "")
-            {
-
-                SQLiteCommand cmd = new SQLiteCommand($"insert into questions values({questid}, '{question}', '{answer_A}', '{answer_B}', '{answer_C}', '{answer_D}', '{truequest}');", con);
-                
-                
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Soru Eklendi");
-
-                con.Close();
-
-                sayac++;
-                lbl_sayac.Text = "Oluşturulan Soru Sayısı: " + sayac;
+            questionsave();
+        }
 
 
 
-
-                // clear
-
-                txtquestion.Text = "";
-                txtasw_a.Text = "";
-                txtasw_b.Text = "";
-                txtasw_c.Text = "";
-                txtasw_d.Text = "";
+        private void btndevam_Click(object sender, EventArgs e)
+        {
+            var sql = new SQLiteConnection(constr);
+            sql.Open();
 
 
-                checkA.Checked = false;
-                checkB.Checked = false;
-                checkC.Checked = false;
-                checkD.Checked = false;
+            string quiznames = cmb_quiz.Text.ToString();
+            SQLiteCommand cmdquount = new SQLiteCommand($"select count(question) from questions where quiz_id = (select quiz_id from quizs where quiz_name = '{quiznames}')", sql);
 
-            }
-            else MessageBox.Show("Soru Yapılamadı");
+            int kayitSayisi = Convert.ToInt32(cmdquount.ExecuteScalar());
 
+            lbl_sayac.Text = "Oluşturulan Soru Sayısı : " + kayitSayisi.ToString();
 
-    }
+            lbl_sayac.Visible = true;
+            btncreate.Visible = true;
 
+            sql.Close();
 
-
-
+        }
 
 
 
@@ -224,10 +310,9 @@ namespace Quizcim
 
         private void CreateQuizPage_Load(object sender, EventArgs e)
         {
-
+            quizsname();
 
         }
 
-       
     }
 }
