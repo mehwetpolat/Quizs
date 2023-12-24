@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_editt = new System.Windows.Forms.Button();
             this.checkD = new System.Windows.Forms.CheckBox();
             this.checkB = new System.Windows.Forms.CheckBox();
             this.checkC = new System.Windows.Forms.CheckBox();
@@ -48,14 +49,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnsave = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btn_editt);
             this.panel2.Controls.Add(this.checkD);
             this.panel2.Controls.Add(this.checkB);
             this.panel2.Controls.Add(this.checkC);
@@ -74,10 +74,22 @@
             this.panel2.Size = new System.Drawing.Size(1274, 195);
             this.panel2.TabIndex = 1;
             // 
+            // btn_editt
+            // 
+            this.btn_editt.BackColor = System.Drawing.Color.Black;
+            this.btn_editt.ForeColor = System.Drawing.Color.SeaShell;
+            this.btn_editt.Location = new System.Drawing.Point(915, 132);
+            this.btn_editt.Name = "btn_editt";
+            this.btn_editt.Size = new System.Drawing.Size(347, 51);
+            this.btn_editt.TabIndex = 10;
+            this.btn_editt.Text = "Soruları Düzenle";
+            this.btn_editt.UseVisualStyleBackColor = false;
+            this.btn_editt.Click += new System.EventHandler(this.btn_editt_Click);
+            // 
             // checkD
             // 
             this.checkD.AutoSize = true;
-            this.checkD.Location = new System.Drawing.Point(614, 104);
+            this.checkD.Location = new System.Drawing.Point(614, 108);
             this.checkD.Name = "checkD";
             this.checkD.Size = new System.Drawing.Size(112, 20);
             this.checkD.TabIndex = 18;
@@ -87,7 +99,7 @@
             // checkB
             // 
             this.checkB.AutoSize = true;
-            this.checkB.Location = new System.Drawing.Point(614, 6);
+            this.checkB.Location = new System.Drawing.Point(614, 10);
             this.checkB.Name = "checkB";
             this.checkB.Size = new System.Drawing.Size(112, 20);
             this.checkB.TabIndex = 17;
@@ -97,7 +109,7 @@
             // checkC
             // 
             this.checkC.AutoSize = true;
-            this.checkC.Location = new System.Drawing.Point(175, 104);
+            this.checkC.Location = new System.Drawing.Point(175, 107);
             this.checkC.Name = "checkC";
             this.checkC.Size = new System.Drawing.Size(112, 20);
             this.checkC.TabIndex = 16;
@@ -107,7 +119,7 @@
             // checkA
             // 
             this.checkA.AutoSize = true;
-            this.checkA.Location = new System.Drawing.Point(175, 3);
+            this.checkA.Location = new System.Drawing.Point(175, 12);
             this.checkA.Name = "checkA";
             this.checkA.Size = new System.Drawing.Size(112, 20);
             this.checkA.TabIndex = 15;
@@ -159,7 +171,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(28, 103);
+            this.label5.Location = new System.Drawing.Point(28, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 18);
             this.label5.TabIndex = 11;
@@ -169,7 +181,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(469, 103);
+            this.label4.Location = new System.Drawing.Point(469, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 18);
             this.label4.TabIndex = 10;
@@ -189,7 +201,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(28, 5);
+            this.label2.Location = new System.Drawing.Point(30, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 18);
             this.label2.TabIndex = 8;
@@ -199,11 +211,11 @@
             // 
             this.lbl_sayac.AutoSize = true;
             this.lbl_sayac.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_sayac.Location = new System.Drawing.Point(979, 190);
+            this.lbl_sayac.Location = new System.Drawing.Point(998, 190);
             this.lbl_sayac.Name = "lbl_sayac";
-            this.lbl_sayac.Size = new System.Drawing.Size(204, 16);
+            this.lbl_sayac.Size = new System.Drawing.Size(183, 16);
             this.lbl_sayac.TabIndex = 4;
-            this.lbl_sayac.Text = "Oluşturulan Soru Sayısı: 0/20";
+            this.lbl_sayac.Text = "Oluşturulan Soru Sayısı: 0";
             this.lbl_sayac.Visible = false;
             this.lbl_sayac.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -213,7 +225,7 @@
             this.btncreate.ForeColor = System.Drawing.Color.SeaShell;
             this.btncreate.Location = new System.Drawing.Point(915, 209);
             this.btncreate.Name = "btncreate";
-            this.btncreate.Size = new System.Drawing.Size(314, 40);
+            this.btncreate.Size = new System.Drawing.Size(347, 40);
             this.btncreate.TabIndex = 3;
             this.btncreate.Text = "Soru Oluştur";
             this.btncreate.UseVisualStyleBackColor = false;
@@ -234,14 +246,14 @@
             this.txtqstname.Location = new System.Drawing.Point(915, 61);
             this.txtqstname.Multiline = true;
             this.txtqstname.Name = "txtqstname";
-            this.txtqstname.Size = new System.Drawing.Size(314, 32);
+            this.txtqstname.Size = new System.Drawing.Size(347, 32);
             this.txtqstname.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(1007, 40);
+            this.label1.Location = new System.Drawing.Point(1034, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 18);
             this.label1.TabIndex = 7;
@@ -263,23 +275,11 @@
             this.btnsave.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnsave.Location = new System.Drawing.Point(915, 99);
             this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(316, 37);
+            this.btnsave.Size = new System.Drawing.Size(347, 37);
             this.btnsave.TabIndex = 9;
             this.btnsave.Text = "Test Oluştur";
             this.btnsave.UseVisualStyleBackColor = false;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.ForeColor = System.Drawing.Color.SeaShell;
-            this.button1.Location = new System.Drawing.Point(1098, 132);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 51);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Soruları Düzenle";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
             // 
             // CreateQuizPage
             // 
@@ -328,6 +328,6 @@
         private System.Windows.Forms.CheckBox checkD;
         private System.Windows.Forms.CheckBox checkB;
         private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_editt;
     }
 }

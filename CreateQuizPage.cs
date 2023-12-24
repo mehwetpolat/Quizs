@@ -97,9 +97,6 @@ namespace Quizcim
 
 
 
-
-
-
         //  CREATE QUESTİON
         private void btnsave_Click(object sender, EventArgs e)
         {
@@ -120,6 +117,7 @@ namespace Quizcim
                 lbl_sayac.Visible = true;
                 btncreate.Visible = true;
             }
+            else MessageBox.Show("Quiz İsmi Girilmedi");
         }
 
 
@@ -160,46 +158,28 @@ namespace Quizcim
 
                 con.Close();
 
+                sayac++;
+                lbl_sayac.Text = "Oluşturulan Soru Sayısı: " + sayac;
+
+
+
+
+                // clear
+
+                txtquestion.Text = "";
+                txtasw_a.Text = "";
+                txtasw_b.Text = "";
+                txtasw_c.Text = "";
+                txtasw_d.Text = "";
+
+
+                checkA.Checked = false;
+                checkB.Checked = false;
+                checkC.Checked = false;
+                checkD.Checked = false;
+
             }
             else MessageBox.Show("Soru Yapılamadı");
-
-
-
-        //if(sayac <= 20)
-        //{
-        //    if (question != "" || answer_A != "" || answer_B != "" || answer_C != "" || answer_D != "")
-        //    {
-
-        //        using (var baglanti = new SQLiteConnection(constr))
-        //        {
-        //            using (var kmt = new SQLiteCommand($"insert into questions values({questid}, '{question}', '{answer_A}', '{answer_B}', '{answer_C}', '{answer_D}', '{truequest}');", baglanti))
-        //            {
-        //                try
-        //                {
-        //                    kmt.Connection.Open();
-        //                    kmt.ExecuteNonQuery();
-
-        //                    MessageBox.Show("Soru Oluşturuldu");
-
-
-
-        //                    sayac++;
-        //                    lbl_sayac.Text = "Oluşturulan Soru Sayısı: " + sayac + "/20";
-
-        //                    kmt.Connection.Close();
-        //                }
-        //                catch (Exception)
-        //                {
-        //                    MessageBox.Show("Soru Kaydı Yapılamadı");
-        //                }
-        //            }
-        //        }
-        //    }
-        //    else { MessageBox.Show("Doldurulmamış Alan Mevcut"); }
-        //}
-        //else MessageBox.Show("Test Soruları Başarıyla Kaydedildi");
-
-
 
 
     }
@@ -213,9 +193,12 @@ namespace Quizcim
 
 
 
-
-
-
+        private void btn_editt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            dbedit frm = new dbedit();
+            frm.Show();
+        }
 
 
 
@@ -245,5 +228,6 @@ namespace Quizcim
 
         }
 
+       
     }
 }

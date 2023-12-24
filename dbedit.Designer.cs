@@ -266,7 +266,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1072, 649);
+            this.ClientSize = new System.Drawing.Size(1072, 629);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.list_quest);
@@ -287,6 +287,7 @@
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_updt);
             this.Name = "dbedit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "dbedit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.dbedit_FormClosing);
             this.Load += new System.EventHandler(this.dbedit_Load);
