@@ -127,6 +127,16 @@ namespace Quizcim
                     sık_d = txtasw_d.Text;
 
 
+                int sorusay = 0;
+
+                // soruyu bul
+                for (int i = 5; i < soruno.Length; i++)
+                {
+                    sorusay += soru[i];
+                }
+
+
+
                 // sql sorgusu
                 using (SQLiteConnection connection = new SQLiteConnection(constr))
                 {
@@ -158,13 +168,13 @@ namespace Quizcim
 
 
                     using (SQLiteCommand command = new SQLiteCommand($"UPDATE questions SET " +
-                    $"question = '{soruno + " " + soru}'," +
+                    $"question = '{soru}'," +
                     $"answer_A = '{sık_a}', " +
                     $"answer_B = '{sık_b}', " +
                     $"answer_C = '{sık_c}', " +
                     $"answer_D = '{sık_d}', " +
                     $"trueanswer = '{truecheck}'" +
-                    $"where question LIKE '{soruno}%' AND quiz_id = (select quiz_id from quizs where quiz_name = '{quizname}')", connection))
+                    $"where question_id = '{sorusay}' AND quiz_id = (select quiz_id from quizs where quiz_name = '{quizname}')", connection))
                     {
                         command.ExecuteNonQuery();
                     }
@@ -189,28 +199,24 @@ namespace Quizcim
                 string quizname = cmb_quiz.SelectedItem.ToString();
 
 
+                int sorusay = 0;
+
+                // soruyu bul
+                for(int i = 5; i < soru.Length; i++)
+                {
+                    sorusay += soru[i];
+                }
 
                 sql.Open();
 
 
-                SQLiteCommand sqlc = new SQLiteCommand($"select* from questions qu, quizs qi where qi.quiz_id = qu.quiz_id AND qi.quiz_name = '{quizname}' AND qu.question LIKE '{soru}%'", sql);
+                SQLiteCommand sqlc = new SQLiteCommand($"select* from questions qu, quizs qi where qi.quiz_id = qu.quiz_id AND qi.quiz_name = '{quizname}' AND qu.question_id = '{sorusay}'", sql);
 
                 SQLiteDataReader dtr = sqlc.ExecuteReader();
 
                 while (dtr.Read())
                 {
-                    string sorusu = "";
-
-                    string[] sorudz = dtr["question"].ToString().Split(' ');
-
-                    for (int i = 2; i < sorudz.Length; i++)
-                    {
-                        sorusu += sorudz[i];
-                    }
-
-
-
-                    txtquestion.Text = sorusu;
+                    txtquestion.Text = dtr["question"].ToString();
                     txtasw_a.Text = dtr["answer_A"].ToString();
                     txtasw_b.Text = dtr["answer_B"].ToString();
                     txtasw_c.Text = dtr["answer_C"].ToString();
