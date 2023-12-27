@@ -58,6 +58,7 @@
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textBox1.Size = new System.Drawing.Size(229, 31);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "admin";
             // 
             // textBox2
             // 
@@ -69,6 +70,7 @@
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.textBox2.Size = new System.Drawing.Size(229, 31);
             this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "0000";
             // 
             // label1
             // 

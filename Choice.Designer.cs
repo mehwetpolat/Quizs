@@ -30,7 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmb_selectquiz = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -59,15 +59,20 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Testi Başlat";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBox1
+            // cmb_selectquiz
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.Linen;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(40, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(556, 24);
-            this.comboBox1.TabIndex = 2;
+            this.cmb_selectquiz.BackColor = System.Drawing.Color.Linen;
+            this.cmb_selectquiz.FormattingEnabled = true;
+            this.cmb_selectquiz.Items.AddRange(new object[] {
+            "Tr1",
+            "Tr2"});
+            this.cmb_selectquiz.Location = new System.Drawing.Point(40, 43);
+            this.cmb_selectquiz.Name = "cmb_selectquiz";
+            this.cmb_selectquiz.Size = new System.Drawing.Size(556, 24);
+            this.cmb_selectquiz.TabIndex = 2;
+            this.cmb_selectquiz.Text = "Lütfen Bir Test Seçiniz";
             // 
             // label1
             // 
@@ -96,12 +101,13 @@
             this.ClientSize = new System.Drawing.Size(632, 240);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmb_selectquiz);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Choice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Choice";
+            this.Load += new System.EventHandler(this.Choice_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +117,7 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmb_selectquiz;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

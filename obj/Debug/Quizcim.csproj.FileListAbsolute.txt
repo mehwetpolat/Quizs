@@ -2,7 +2,6 @@ C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\bin\Debug\Quizcim.exe.config
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\bin\Debug\Quizcim.exe
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\bin\Debug\Quizcim.pdb
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.csproj.AssemblyReference.cache
-C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.csproj.SuggestedBindingRedirects.cache
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.Login_Page.resources
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.Properties.Resources.resources
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.csproj.GenerateResource.cache
@@ -21,3 +20,4 @@ C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\bin\Debug\EntityFramework.Sql
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\bin\Debug\System.Data.SQLite.xml
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.csproj.CopyComplete
 C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.dbedit.resources
+C:\Users\mehmet\Desktop\Projelerim\Quizcim\Quizcim\obj\Debug\Quizcim.QuizForm.resources
