@@ -38,7 +38,7 @@ namespace Quizcim
         private void button1_Click(object sender, EventArgs e)
         {
             CreateQuizPage cq1 = new CreateQuizPage();
-            this.Close();
+            this.Hide();
             cq1.Show();
         }
 
