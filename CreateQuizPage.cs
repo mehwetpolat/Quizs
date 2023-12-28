@@ -157,7 +157,7 @@ namespace Quizcim
                 {
                     kayitSayisi++;
 
-                    SQLiteCommand cmd = new SQLiteCommand($"insert into questions values({questid}, '{"Soru " + kayitSayisi + " " + question}', '{answer_A}', '{answer_B}', '{answer_C}', '{answer_D}', '{truequest}');", con);
+                    SQLiteCommand cmd = new SQLiteCommand($"insert into questions values({questid}, '{kayitSayisi}', '{question}', '{answer_A}', '{answer_B}', '{answer_C}', '{answer_D}', '{truequest}');", con);
 
 
                     cmd.ExecuteNonQuery();
@@ -207,6 +207,8 @@ namespace Quizcim
             con.Open();
 
 
+
+            lbl_sayac.Text = "Oluşturulan Soru Sayısı : 0";
 
             string qstname = cmb_quiz.Text.Trim();
             bool namecheck = false;

@@ -119,7 +119,6 @@ namespace Quizcim
                 // tanımlamalar
                 string
                     quizname = cmb_quiz.SelectedItem.ToString(),
-                    soruno = list_quest.SelectedItem.ToString(),
                     soru = txtquestion.Text,
                     sık_a = txtasw_a.Text,
                     sık_b = txtasw_b.Text,
@@ -127,13 +126,10 @@ namespace Quizcim
                     sık_d = txtasw_d.Text;
 
 
-                int sorusay = 0;
 
-                // soruyu bul
-                for (int i = 5; i < soruno.Length; i++)
-                {
-                    sorusay += soru[i];
-                }
+                string[] dz = list_quest.SelectedItem.ToString().Split(' ');
+
+                int sorunom = int.Parse(dz[1]);
 
 
 
@@ -174,7 +170,7 @@ namespace Quizcim
                     $"answer_C = '{sık_c}', " +
                     $"answer_D = '{sık_d}', " +
                     $"trueanswer = '{truecheck}'" +
-                    $"where question_id = '{sorusay}' AND quiz_id = (select quiz_id from quizs where quiz_name = '{quizname}')", connection))
+                    $"where question_id = '{sorunom}' AND quiz_id = (select quiz_id from quizs where quiz_name = '{quizname}')", connection))
                     {
                         command.ExecuteNonQuery();
                     }
@@ -192,20 +188,26 @@ namespace Quizcim
         // listboxta seçili olan soruyu formda uygun yerlere aktarma
         private void list_quest_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmb_quiz.SelectedItem != null)
+
+
+            txtquestion.Text = "";
+            txtasw_a.Text = "";
+            txtasw_b.Text = "";
+            txtasw_c.Text = "";
+            txtasw_d.Text = "";
+
+
+            if (cmb_quiz.SelectedItem != null)
             {
 
                 string soru = list_quest.SelectedItem.ToString();
                 string quizname = cmb_quiz.SelectedItem.ToString();
 
+                string[] dz = soru.Split(' ');
 
-                int sorusay = 0;
 
-                // soruyu bul
-                for(int i = 5; i < soru.Length; i++)
-                {
-                    sorusay += soru[i];
-                }
+                int sorusay = int.Parse(dz[1]);
+
 
                 sql.Open();
 
@@ -288,7 +290,11 @@ namespace Quizcim
 
         private void cmb_quiz_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            txtquestion.Text = "";
+            txtasw_a.Text = "";
+            txtasw_b.Text = "";
+            txtasw_c.Text = "";
+            txtasw_d.Text = "";
         }
     }
 }
